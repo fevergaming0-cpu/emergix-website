@@ -196,5 +196,42 @@ height:45px;
 .partners img{
 width:120px;
 }
+#partners{
+    background:#f8f8f8;
+}
 
+.partner-slider{
+    overflow:hidden;
+    width:100%;
+    position:relative;
+}
+
+.partner-track{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    width:max-content;
+    animation:slidePartners 20s linear infinite;
+}
+
+.partner-track img{
+    height:80px;
+    width:auto;
+    object-fit:contain;
+    filter:grayscale(20%);
+}
+
+.partner-track:hover{
+    animation-play-state:paused;
+}
+
+@keyframes slidePartners{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
 }
