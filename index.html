@@ -1,63 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EMERGIX | RAHS Ambulance Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMERGIX & RAHS Ambulance Services</title>
+
 <link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="js/script.js" defer></script>
 </head>
+
 <body>
-<nav>
-<div class="logos">
-<img src="assets/logos/emergix.png" height="60">
-<img src="assets/logos/rahs.png" height="60">
+
+<div class="top-bar">
+    🚑 24/7 Emergency Ambulance Service
 </div>
-<a href="tel:9815357947" class="call">📞 98153 57947</a>
+
+<header>
+
+<div class="logo-area">
+<img src="images/emergix.png" class="logo">
+<img src="images/rahs.png" class="logo">
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#fleet">Fleet</a>
+<a href="#partners">Partners</a>
+<a href="#contact">Contact</a>
 </nav>
 
+</header>
+
 <section class="hero">
-<h1>Every Second Counts. Every Life Matters.</h1>
-<p>24×7 Advanced Ambulance, ICU, Ventilator & Patient Transport Services Across Punjab</p>
-<div>
-<a class="btn" href="tel:9815357947">Call Now</a>
-<a class="btn2" href="https://wa.me/919815357947">WhatsApp Booking</a>
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>24/7 Emergency Ambulance Services</h1>
+
+<p>
+Advanced Life Support • ICU Transfers • Patient Transport
+</p>
+
+<div class="hero-buttons">
+
+<a href="tel:9780743328" class="btn">
+Call Now
+</a>
+
+<a href="https://wa.me/919780743328" class="btn whatsapp">
+WhatsApp
+</a>
+
 </div>
+
+</div>
+
 </section>
 
 <section class="stats">
-<div><h2>24×7</h2><p>Availability</p></div>
-<div><h2>100%</h2><p>Emergency Support</p></div>
-<div><h2>Punjab</h2><p>Coverage</p></div>
-</section>
 
-<section>
-<h2>Services</h2>
-<div class="cards">
-<div class="card">ICU Ambulance</div>
-<div class="card">Ventilator Ambulance</div>
-<div class="card">Oxygen Ambulance</div>
-<div class="card">ALS Ambulance</div>
-<div class="card">Railway Transfers</div>
-<div class="card">Long Distance Transfers</div>
+<div>
+<h2 class="counter" data-target="15">0</h2>
+<p>Ambulances</p>
 </div>
+
+<div>
+<h2 class="counter" data-target="1000">0</h2>
+<p>Patient Transfers</p>
+</div>
+
+<div>
+<h2 class="counter" data-target="50">0</h2>
+<p>Hospital Partners</p>
+</div>
+
+<div>
+<h2>24/7</h2>
+<p>Availability</p>
+</div>
+
 </section>
 
-<section>
+<section id="services">
+
+<h2>Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>ALS Ambulance</h3>
+<p>Advanced Life Support equipped ambulances.</p>
+</div>
+
+<div class="card">
+<h3>ICU Ambulance</h3>
+<p>Critical care transport with monitoring systems.</p>
+</div>
+
+<div class="card">
+<h3>BLS Ambulance</h3>
+<p>Basic Life Support ambulance transportation.</p>
+</div>
+
+<div class="card">
+<h3>Patient Transfer</h3>
+<p>Safe intercity and local patient transport.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="fleet">
+
+<h2>Our Fleet</h2>
+
+<div class="gallery">
+
+<img src="images/ambulance1.jpg">
+<img src="images/ambulance2.jpg">
+<img src="images/interior1.jpg">
+<img src="images/interior2.jpg">
+<img src="images/patient.jpg">
+
+</div>
+
+</section>
+
+<section id="partners">
+
 <h2>Trusted Partners</h2>
-<p>Indian Railways • Aykai Hospital • Aditya Birla Paints • Red Health</p>
+
+<div class="partner-row">
+
+<img src="images/railways.png">
+<img src="images/aykai.png">
+<img src="images/redhealth.png">
+<img src="images/birla.png">
+
+</div>
+
 </section>
 
-<section>
-<h2>Testimonials</h2>
-<div class="card">“Fast response and professional team.” – Gurpreet Singh</div>
-<div class="card">“Clean ICU ambulance and caring staff.” – Harpreet Kaur</div>
-</section>
+<section id="contact">
 
-<section>
 <h2>Emergency Contact</h2>
-<p>Phone: 98153 57947</p>
-<p>Ludhiana, Punjab</p>
+
+<h3>97807-43328</h3>
+<h3>98153-57947</h3>
+
 </section>
 
-<footer>EMERGIX | RAHS © 2026</footer>
-</body></html>
+<a class="floating-call" href="tel:9780743328">
+📞
+</a>
+
+<a class="floating-whatsapp"
+href="https://wa.me/919780743328">
+💬
+</a>
+
+</body>
+</html>
