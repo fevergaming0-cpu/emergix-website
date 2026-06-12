@@ -1,72 +1,205 @@
-/* EMERGIX Counter Animation */
+// ===========================
+// ANIMATED COUNTERS
+// ===========================
 
-const counters = document.querySelectorAll(’.counter’);
+const counters = document.querySelectorAll(".counter");
 
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
+const startCounter = () => {
+  counters.forEach(counter => {
 
-if (!entry.isIntersecting) return;
-const counter = entry.target;
-const target = parseInt(counter.dataset.target);
-let current = 0;
-const increment = Math.max(1, Math.ceil(target / 100));
-function update() {
-  current += increment;
-  if (current < target) {
-    counter.textContent =
-      current + (target >= 10 ? "+" : "");
-    requestAnimationFrame(update);
-  } else {
-    counter.textContent =
-      target + (target >= 10 ? "+" : "");
-  }
-}
-update();
-observer.unobserve(counter);
+    const target = +counter.getAttribute("data-target");
 
-});
-}, {
-threshold: 0.5
-});
+    let count = 0;
 
-counters.forEach(counter => {
-observer.observe(counter);
-});
+    const increment = target / 120;
 
-/* Pause Partner Slider On Hover */
+    const updateCounter = () => {
 
-const partnerTrack =
-document.querySelector(’.partner-track’);
+      if (count < target) {
 
-if (partnerTrack) {
+        count += increment;
 
-partnerTrack.addEventListener(‘mouseenter’, () => {
-partnerTrack.style.animationPlayState = ‘paused’;
-});
+        counter.innerText = Math.ceil(count).toLocaleString();
 
-partnerTrack.addEventListener(‘mouseleave’, () => {
-partnerTrack.style.animationPlayState = ‘running’;
-});
+        requestAnimationFrame(updateCounter);
 
-}
+      } else {
 
-/* Smooth Scrolling */
+        counter.innerText = target.toLocaleString() + "+";
 
-document.querySelectorAll(‘a[href^=”#”]’).forEach(anchor => {
+      }
 
-anchor.addEventListener(‘click’, function (e) {
+    };
 
-e.preventDefault();
-const target =
-  document.querySelector(
-    this.getAttribute('href')
-  );
-if (target) {
-  target.scrollIntoView({
-    behavior: 'smooth'
+    updateCounter();
+
   });
+};
+
+const statsSection = document.querySelector(".stats");
+
+let statsStarted = false;
+
+window.addEventListener("scroll", () => {
+
+  if (!statsSection) return;
+
+  const trigger =
+    statsSection.getBoundingClientRect().top;
+
+  if (trigger < window.innerHeight - 100 && !statsStarted) {
+
+    statsStarted = true;
+
+    startCounter();
+
+  }
+
+});
+
+
+// ===========================
+// SMOOTH SCROLL
+// ===========================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+  anchor.addEventListener("click", function (e) {
+
+    e.preventDefault();
+
+    const target = document.querySelector(
+      this.getAttribute("href")
+    );
+
+    if (target) {
+
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+  });
+
+});
+
+
+// ===========================
+// PARTNER SLIDER PAUSE
+// ===========================
+
+const track = document.querySelector(".partner-track");
+
+if (track) {
+
+  track.addEventListener("mouseenter", () => {
+
+    track.style.animationPlayState = "paused";
+
+  });
+
+  track.addEventListener("mouseleave", () => {
+
+    track.style.animationPlayState = "running";
+
+  });
+
 }
 
-});
+
+// ===========================
+// SCROLL REVEAL EFFECT
+// ===========================
+
+const reveals = document.querySelectorAll(
+  ".icon-card, .stat-box, .testimonial, .fleet-grid img"
+);
+
+function revealElements() {
+
+  reveals.forEach(el => {
+
+    const top =
+      el.getBoundingClientRect().top;
+
+    if (top < window.innerHeight - 100) {
+
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+
+    }
+
+  });
+
+}
+
+reveals.forEach(el => {
+
+  el.style.opacity = "0";
+
+  el.style.transform = "translateY(40px)";
+
+  el.style.transition =
+    "all .8s ease";
 
 });
+
+window.addEventListener("scroll", revealElements);
+
+revealElements();
+
+
+// ===========================
+// NAVBAR ACTIVE LINK
+// ===========================
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+  let current = "";
+
+  sections.forEach(section => {
+
+    const sectionTop = section.offsetTop - 150;
+
+    if (pageYOffset >= sectionTop) {
+
+      current = section.getAttribute("id");
+
+    }
+
+  });
+
+  navLinks.forEach(link => {
+
+    link.classList.remove("active");
+
+    if (
+      link.getAttribute("href") === "#" + current
+    ) {
+      link.classList.add("active");
+    }
+
+  });
+
+});
+
+
+// ===========================
+// HERO IMAGE PRELOAD
+// ===========================
+
+const heroImg = new Image();
+heroImg.src = "hero1.jpg";
+
+
+// ===========================
+// CONSOLE MESSAGE
+// ===========================
+
+console.log(
+  "EMERGIX & RAHS Premium Website Loaded Successfully"
+);
