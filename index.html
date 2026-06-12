@@ -1,54 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>EMERGIX TEST</title>
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-}
-<a href="gallery.html">Gallery</a>
-.hero{
-height:100vh;
-background:url('ambulance1.jpg');
-background-size:cover;
-background-position:center;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-}
-
-.hero h1{
-font-size:70px;
-margin:0;
-}
-
-.hero p{
-font-size:24px;
-}
-
-.logo{
-width:120px;
-margin:20px;
-}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMERGIX & RAHS Ambulance Service</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="hero">
-
-<img src="emergix.png" class="logo">
-
-<h1>EMERGIX</h1>
-
-<p>24/7 Emergency Ambulance Service</p>
-
+<header>
+<div class="logo-area">
+<img src="emergix.png" alt="Emergix">
+<img src="rahs.png" alt="RAHS">
 </div>
+<nav>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#fleet">Fleet</a>
+<a href="gallery.html">Gallery</a>
+<a href="#partners">Partners</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>24/7 Emergency Ambulance Service</h1>
+<p>
+ALS • BLS • ICU Transfers • Patient Transport
+</p>
+<a href="tel:9780743328" class="btn call">
+Call Now
+</a>
+<a href="https://wa.me/919780743328" class="btn whatsapp">
+WhatsApp
+</a>
+</div>
+</section>
+<section id="services">
+<h2>Our Services</h2>
+<div class="services">
+<div class="card">
+<h3>ALS Ambulance</h3>
+<p>Advanced Life Support Ambulance</p>
+</div>
+<div class="card">
+<h3>BLS Ambulance</h3>
+<p>Basic Life Support Ambulance</p>
+</div>
+<div class="card">
+<h3>ICU Transfer</h3>
+<p>Critical Care Transfer</p>
+</div>
+<div class="card">
+<h3>Patient Transport</h3>
+<p>Local & Long Distance Transport</p>
+</div>
+</div>
+</section>
+<section id="fleet">
+<h2>Our Fleet</h2>
+<div class="gallery-preview">
+<img src="ambulance1.jpg">
+<img src="ambulance2.jpg">
+<img src="eeco1.jpg">
+<img src="tempo 1.jpg">
+</div>
+</section>
+<section>
+<h2>Ambulance Interior</h2>
+<div class="gallery-preview">
+<img src="interior1.jpg">
+<img src="interior2.jpg">
+<img src="patient.jpg">
+</div>
+</section>
+<section id="partners">
+<h2>Trusted Partners</h2>
+<div class="partners">
+<img src="railways.png">
+<img src="aykai.png">
+<img src="birla.png">
+<img src="redhealth.png">
+</div>
+</section>
+<section id="contact">
+<h2>Emergency Contact</h2>
+<p>97807-43328</p>
+<p>98153-57947</p>
+</section>
+<footer>
+© EMERGIX & RAHS Ambulance Service
+</footer>
 
+📞
+💬
+
+<script src="script.js"></script>
 </body>
 </html>
