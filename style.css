@@ -1,0 +1,11 @@
+
+body{margin:0;font-family:Segoe UI,sans-serif;background:#f8fafc}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:#07152F}
+.call{color:#fff;text-decoration:none;font-weight:bold}
+.hero{padding:120px 20px;text-align:center;color:#fff;background:linear-gradient(135deg,#07152F,#D72638)}
+.btn,.btn2{padding:14px 24px;border-radius:10px;text-decoration:none;margin:5px;display:inline-block}
+.btn{background:#F97316;color:#fff}.btn2{background:#fff;color:#07152F}
+.stats,.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;padding:20px}
+.card,.stats div{background:#fff;padding:20px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+section{padding:50px 20px;text-align:center}
+footer{background:#07152F;color:#fff;padding:20px;text-align:center}
