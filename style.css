@@ -189,7 +189,24 @@ flex-wrap:wrap;
 max-width:1200px;
 margin:auto;
 }
+.partner-slider{
+    overflow:hidden;
+    width:100%;
+}
 
+.partner-track{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    animation:slide 20s linear infinite;
+}
+
+.partner-track img{
+    width:180px;
+    height:90px;
+    object-fit:contain;
+    flex-shrink:0;
+}
 .partners img{
 height:70px;
 max-width:180px;
