@@ -1,9 +1,9 @@
 const heroImages = [
-  "ambulance1.jpg",
-  "ambulance2.jpg",
-  "tempo 1.jpg",
-  "trax1.jpg",
-  "eeco1.jpg"
+"ambulance1.jpg",
+"ambulance2.jpg",
+"tempo 1.jpg",
+"trax1.jpg",
+"eeco1.jpg"
 ];
 
 let currentSlide = 0;
@@ -11,51 +11,75 @@ let currentSlide = 0;
 const hero = document.querySelector(".hero");
 
 function changeHero() {
-  if (!hero) return;
 
-  hero.style.backgroundImage =
-    `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('${heroImages[currentSlide]}')`;
+if (!hero) return;
 
-  currentSlide++;
-  if (currentSlide >= heroImages.length) {
-    currentSlide = 0;
-  }
+hero.style.backgroundImage =
+`linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+  url('${heroImages[currentSlide]}')`;
+
+currentSlide++;
+
+if(currentSlide >= heroImages.length){
+currentSlide = 0;
+}
 }
 
 changeHero();
+
 setInterval(changeHero, 4000);
 
-const galleryImages = [
-  "ambulance1.jpg",
-  "ambulance2.jpg",
-  "eeco1.jpg",
-  "eeco 3.jpg",
-  "eeco5.jpg",
-  "eeco 8.jpg",
-  "eeco9.jpg",
-  "eertiga1.jpg",
-  "eertiga2.jpg",
-  "ertiga3.jpg",
-  "tempo 1.jpg",
-  "tempo 2.jpg",
-  "tempo 4.jpg",
-  "tempo 5.jpg",
-  "tempo6.jpg",
-  "tempo7.jpg",
-  "tempo8.jpg",
-  "tempo9.jpg",
-  "trax1.jpg",
-  "trax2.jpg"
-];
+/* STATS COUNTER */
 
-const gallery = document.getElementById("gallery-grid");
+const counters = document.querySelectorAll(".stat-box h3");
 
-if (gallery) {
-  galleryImages.forEach(img => {
-    gallery.innerHTML += `
-      <div class="gallery-item">
-        <img src="${img}" alt="Ambulance">
-      </div>
-    `;
-  });
+counters.forEach(counter => {
+
+const text = counter.innerText;
+
+if(!text.includes("+")) return;
+
+const target =
+parseInt(text.replace(/[^0-9]/g,""));
+
+let count = 0;
+
+const speed = target / 100;
+
+const update = () => {
+
+```
+if(count < target){
+
+  count += speed;
+
+  counter.innerText =
+  Math.floor(count) + "+";
+
+  requestAnimationFrame(update);
+
+}else{
+
+  counter.innerText = text;
+
 }
+```
+
+};
+
+update();
+
+});
+
+/* PARTNER SLIDER PAUSE */
+
+const partnerTrack =
+document.querySelector(".partner-track");
+
+if(partnerTrack){
+
+partnerTrack.addEventListener(
+"mouseenter",
+() => {
+partnerTrack.style.animationPlayState =
+"
