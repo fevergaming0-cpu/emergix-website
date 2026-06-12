@@ -1,28 +1,61 @@
-const counters=document.querySelectorAll(".counter");
+const heroImages = [
+  "ambulance1.jpg",
+  "ambulance2.jpg",
+  "tempo 1.jpg",
+  "trax1.jpg",
+  "eeco1.jpg"
+];
 
-counters.forEach(counter=>{
+let currentSlide = 0;
 
-const update=()=>{
+const hero = document.querySelector(".hero");
 
-const target=+counter.getAttribute("data-target");
-const count=+counter.innerText;
+function changeHero() {
+  if (!hero) return;
 
-const increment=target/100;
+  hero.style.backgroundImage =
+    `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('${heroImages[currentSlide]}')`;
 
-if(count<target){
-
-counter.innerText=Math.ceil(count+increment);
-
-setTimeout(update,20);
-
-}else{
-
-counter.innerText=target+"+";
-
+  currentSlide++;
+  if (currentSlide >= heroImages.length) {
+    currentSlide = 0;
+  }
 }
 
-};
+changeHero();
+setInterval(changeHero, 4000);
 
-update();
+const galleryImages = [
+  "ambulance1.jpg",
+  "ambulance2.jpg",
+  "eeco1.jpg",
+  "eeco 3.jpg",
+  "eeco5.jpg",
+  "eeco 8.jpg",
+  "eeco9.jpg",
+  "eertiga1.jpg",
+  "eertiga2.jpg",
+  "ertiga3.jpg",
+  "tempo 1.jpg",
+  "tempo 2.jpg",
+  "tempo 4.jpg",
+  "tempo 5.jpg",
+  "tempo6.jpg",
+  "tempo7.jpg",
+  "tempo8.jpg",
+  "tempo9.jpg",
+  "trax1.jpg",
+  "trax2.jpg"
+];
 
-});
+const gallery = document.getElementById("gallery-grid");
+
+if (gallery) {
+  galleryImages.forEach(img => {
+    gallery.innerHTML += `
+      <div class="gallery-item">
+        <img src="${img}" alt="Ambulance">
+      </div>
+    `;
+  });
+}
