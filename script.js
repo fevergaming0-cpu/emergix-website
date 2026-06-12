@@ -1,73 +1,72 @@
-const heroImages = [
-"ambulance1.jpg",
-"ambulance2.jpg",
-"tempo 1.jpg",
-"trax1.jpg",
-"eeco1.jpg"
-];
+/* EMERGIX Counter Animation */
 
-let currentSlide = 0;
-const hero = document.querySelector(".hero");
+const counters = document.querySelectorAll(’.counter’);
 
-function changeHero() {
-if (!hero) return;
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
 
-hero.style.backgroundImage =
-`linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-   url('${heroImages[currentSlide]}')`;
-
-currentSlide++;
-
-if(currentSlide >= heroImages.length){
-currentSlide = 0;
-}
-}
-
-changeHero();
-setInterval(changeHero,4000);
-
-/* ANIMATED STATS */
-
-const counters = document.querySelectorAll(".stat-box h3");
-
-const animateCounter = (counter) => {
-
-const originalText = counter.innerText;
-
-let target =
-parseInt(originalText.replace(/[^0-9]/g,""));
-
-if(isNaN(target)) return;
-
-let count = 0;
-
+if (!entry.isIntersecting) return;
+const counter = entry.target;
+const target = parseInt(counter.dataset.target);
+let current = 0;
 const increment = Math.max(1, Math.ceil(target / 100));
-
-const update = () => {
-
-```
-count += increment;
-
-if(count < target){
-
-  if(originalText.includes("+")){
-    counter.innerText = count + "+";
-  }else{
-    counter.innerText = count;
+function update() {
+  current += increment;
+  if (current < target) {
+    counter.textContent =
+      current + (target >= 10 ? "+" : "");
+    requestAnimationFrame(update);
+  } else {
+    counter.textContent =
+      target + (target >= 10 ? "+" : "");
   }
+}
+update();
+observer.unobserve(counter);
 
-  requestAnimationFrame(update);
+});
+}, {
+threshold: 0.5
+});
 
-}else{
+counters.forEach(counter => {
+observer.observe(counter);
+});
 
-  counter.innerText = originalText;
+/* Pause Partner Slider On Hover */
+
+const partnerTrack =
+document.querySelector(’.partner-track’);
+
+if (partnerTrack) {
+
+partnerTrack.addEventListener(‘mouseenter’, () => {
+partnerTrack.style.animationPlayState = ‘paused’;
+});
+
+partnerTrack.addEventListener(‘mouseleave’, () => {
+partnerTrack.style.animationPlayState = ‘running’;
+});
 
 }
-```
 
-};
+/* Smooth Scrolling */
 
-update();
-};
+document.querySelectorAll(‘a[href^=”#”]’).forEach(anchor => {
 
-const observer = new IntersectionObserver((
+anchor.addEventListener(‘click’, function (e) {
+
+e.preventDefault();
+const target =
+  document.querySelector(
+    this.getAttribute('href')
+  );
+if (target) {
+  target.scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+});
+
+});
