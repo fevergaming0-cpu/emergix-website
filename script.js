@@ -7,16 +7,14 @@ const heroImages = [
 ];
 
 let currentSlide = 0;
-
 const hero = document.querySelector(".hero");
 
 function changeHero() {
-
 if (!hero) return;
 
 hero.style.backgroundImage =
 `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-  url('${heroImages[currentSlide]}')`;
+   url('${heroImages[currentSlide]}')`;
 
 currentSlide++;
 
@@ -26,41 +24,43 @@ currentSlide = 0;
 }
 
 changeHero();
+setInterval(changeHero,4000);
 
-setInterval(changeHero, 4000);
-
-/* STATS COUNTER */
+/* ANIMATED STATS */
 
 const counters = document.querySelectorAll(".stat-box h3");
 
-counters.forEach(counter => {
+const animateCounter = (counter) => {
 
-const text = counter.innerText;
+const originalText = counter.innerText;
 
-if(!text.includes("+")) return;
+let target =
+parseInt(originalText.replace(/[^0-9]/g,""));
 
-const target =
-parseInt(text.replace(/[^0-9]/g,""));
+if(isNaN(target)) return;
 
 let count = 0;
 
-const speed = target / 100;
+const increment = Math.max(1, Math.ceil(target / 100));
 
 const update = () => {
 
 ```
+count += increment;
+
 if(count < target){
 
-  count += speed;
-
-  counter.innerText =
-  Math.floor(count) + "+";
+  if(originalText.includes("+")){
+    counter.innerText = count + "+";
+  }else{
+    counter.innerText = count;
+  }
 
   requestAnimationFrame(update);
 
 }else{
 
-  counter.innerText = text;
+  counter.innerText = originalText;
 
 }
 ```
@@ -68,18 +68,6 @@ if(count < target){
 };
 
 update();
+};
 
-});
-
-/* PARTNER SLIDER PAUSE */
-
-const partnerTrack =
-document.querySelector(".partner-track");
-
-if(partnerTrack){
-
-partnerTrack.addEventListener(
-"mouseenter",
-() => {
-partnerTrack.style.animationPlayState =
-"
+const observer = new IntersectionObserver((
