@@ -235,3 +235,48 @@ width:120px;
     }
 }
 }
+.fleet-slider{
+overflow:hidden;
+padding:20px 0;
+}
+
+.fleet-track{
+display:flex;
+gap:20px;
+width:max-content;
+animation:fleetMove 35s linear infinite;
+}
+
+.fleet-track img{
+height:220px;
+width:320px;
+object-fit:cover;
+border-radius:12px;
+}
+
+@keyframes fleetMove{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+.partner-slider{
+overflow:hidden;
+}
+
+.partner-track{
+display:flex;
+gap:60px;
+width:max-content;
+animation:partnerMove 20s linear infinite;
+align-items:center;
+}
+
+.partner-track img{
+height:80px;
+width:auto;
+}
+
+@keyframes partnerMove{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
